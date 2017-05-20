@@ -41,9 +41,20 @@ class Home extends Component {
 
   render() {
     const { user } = this.props;
-
+    if(!user) {
+      return (
+        <WebView
+          source={{uri: 'http://localhost:3000/login/soundcloud'}}
+          style={{marginTop: 20}}
+          mixedContentMode='always'
+        />
+      );
+    }
+    if(user.created) {
+      return <OnBoarding />
+    }
     return (
-      <Likes
+      <Savant
       title='Your Likes'
       navigator={this.props.navigator}
     />
