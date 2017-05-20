@@ -12,7 +12,7 @@ class Likes extends Component {
   componentDidMount() {
     const { endpoint, queueTracks, queue, user } = this.props 
     this.props.fetchTracks(
-      `https://api.soundcloud.com/users/${user.soundcloud_id}/favorites/?client_id=622c5a5338becb1365fb57b6bdc97f09&linked_partitioning=1`, 
+      `https://api.soundcloud.com/users/22158004/favorites/?client_id=622c5a5338becb1365fb57b6bdc97f09&linked_partitioning=1`, 
       'likes'
     )
   }
