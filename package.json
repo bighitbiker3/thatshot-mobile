@@ -1,0 +1,42 @@
+{
+  "name": "queue-that-mobile",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "jest-expo": "^0.4.0",
+    "react-test-renderer": "16.0.0-alpha.6",
+    "redux-logger": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts"
+    ]
+  },
+  "dependencies": {
+    "axios": "^0.16.1",
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.43.4",
+    "react-native-audio-streamer": "0.0.9",
+    "react-native-audio-toolkit": "^1.0.5",
+    "react-native-background-task": "^0.1.0",
+    "react-native-background-timer": "^1.0.1",
+    "react-native-deep-linking": "^2.1.0",
+    "react-native-music-control": "^0.4.1",
+    "react-native-sound": "^0.10.1",
+    "react-native-video": "^1.0.0",
+    "react-navigation": "^1.0.0-beta.9",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "socket.io-client": "^2.0.1"
+  }
+}

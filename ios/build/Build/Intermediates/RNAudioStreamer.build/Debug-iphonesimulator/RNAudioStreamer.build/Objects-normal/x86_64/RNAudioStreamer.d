@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/RNAudioStreamer.m \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/RNAudioStreamer.h \
+  ../../react-native/React/Base/RCTBridgeModule.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioStreamer.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioBase.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioFile.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioFilePreprocessor.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioAnalyzer+Default.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioAnalyzer.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/RNAudioFileURL.h \
+  /Users/el_is_based/Dev/queue-that-mobile/node_modules/react-native-audio-streamer/ios/RNAudioStreamer/src/DOUAudioStreamer+Options.h \
+  ../../react-native/React/Base/RCTEventDispatcher.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/el_is_based/Dev/queue-that-mobile/ios/build/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h

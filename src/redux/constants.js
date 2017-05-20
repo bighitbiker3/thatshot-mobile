@@ -1,0 +1,21 @@
+export const PLAY_SONG = 'PLAY_SONG'
+export const PAUSE_SONG = 'PAUSE_SONG'
+export const SONG_ENDED = 'SONG_ENDED'
+
+// Queue
+export const QUEUE_ADD = 'QUEUE_ADD';
+export const QUEUE_DELETE = 'QUEUE_DELETE';
+export const QUEUE_MOVE = 'QUEUE_MOVE';
+export const SHIFT_QUEUE = 'SHIFT_QUEUE';
+
+// Tracks
+export const LIKES_FETCH_SUCCESS = 'LIKES_FETCH_SUCCESS'
+export const ARTIST_FETCH_SUCCESS = 'ARTIST_FETCH_SUCCESS'
+export const ARTIST_CLEAR_TRACKS = 'ARTIST_CLEAR_TRACKS'
+export const SAVANT_FETCH_SUCCESS = 'SAVANT_FETCH_SUCCESS'
+
+//AUTH 
+export const USER_FETCH_SUCCESS = 'USER_FETCH_SUCCESS';
+
+//Socket
+export const SOCKET_CONNECTED = 'SOCKET_CONNECTED'
