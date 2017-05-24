@@ -4,25 +4,29 @@ import { connect } from 'react-redux';
 import { fetchTracks } from '../redux/actions/tracks';
 import { getArtistTracks, getArtistNextHref } from '../redux/selectors';
 
-import Nav from './Nav'
 import TrackList from './TrackList'
 
 
 class ArtistPage extends Component {
   componentDidMount() {
-    const { endpoint, queueTracks, queue } = this.props 
+    const { endpoint } = this.props.navigation.state.params
     this.props.fetchTracks(endpoint, 'artist')
   }
   
   render() {
-    const { title, tracks } = this.props
+    const { title, tracks, navigation } = this.props
     return (
-      <Nav extraStyles={{container: { flex: 1 } }} navigator={this.props.navigator} title={title}>
-        <TrackList navigator={this.props.navigator} tracks={tracks} />
-      </Nav>
+      <TrackList navigation={navigation} tracks={tracks} />
     );
   }
 }
+
+ArtistPage.navigationOptions = (props) => {
+  const { title } = props.navigation.state.params
+  return {
+    title
+  }
+};
 
 const mapStateToProps = (state) => ({
   tracks: getArtistTracks(state)

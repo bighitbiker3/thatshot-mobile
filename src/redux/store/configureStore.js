@@ -8,7 +8,7 @@ export default function configureStore(initialState = {}) {
     thunk
   ];
 
-  middleware.push(logger);
+  // middleware.push(logger);
 
   const store = createStore(
     rootReducer,

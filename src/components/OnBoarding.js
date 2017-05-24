@@ -5,6 +5,8 @@ import { View, Text } from 'react-native'
 import { startOnboarding } from '../redux/actions/auth';
 import { getUser } from '../redux/selectors'
 
+import Loader from './Loader'
+
 class OnBoarding extends Component {
   componentDidMount() {
     const { id, soundcloud_id } = this.props.user
@@ -13,9 +15,7 @@ class OnBoarding extends Component {
   
   render() {
     return (
-      <View>
-        
-      </View>
+      <Loader />
     );
   }
 }

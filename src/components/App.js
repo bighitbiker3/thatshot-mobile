@@ -2,14 +2,18 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, StatusBar } from 'react-native';
 
 import { Linking, WebView } from 'react-native';
-
 import { Provider } from 'react-redux';
+import BackgroundTimer from 'react-native-background-timer';
+
+const io = require('socket.io-client/dist/socket.io')
+
+import colors from '../lib/colors'
+
 import configureStore from '../redux/store/configureStore';
 import { nextSong } from '../redux/actions/player'
 import { socketConnected } from '../redux/actions/socket';
-const io = require('socket.io-client/dist/socket.io')
 
-const socket = io('http://localhost:3000', {
+const socket = io('https://thatshot.audio', {
   transports: ['websocket'] // you need to explicitly tell it to use websockets
 });
 
@@ -21,17 +25,15 @@ import NavigatorWrapper from './NavigatorWrapper'
 
 
 const store = configureStore()
-import BackgroundTimer from 'react-native-background-timer';
 
 const intervalId = BackgroundTimer.setInterval(() => {
   const { ended } = store.getState().player;
   if (ended) {
-    console.log('next song coinnnnnnn');
     store.dispatch(nextSong())
   }
 
 }, 1000);
-
+// For Socket.io?
 window.navigator.userAgent = 'ReactNative';
 
 export default class App extends React.Component {
@@ -41,12 +43,13 @@ export default class App extends React.Component {
    render() {
     return (
       <Provider store={store}>
-        <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <View style={{ flex: 1, backgroundColor: colors.white }}>
           <StatusBar
             barStyle="light-content"
-            backgroundColor='black'
+            backgroundColor={colors.lightDark}
           />
           <NavigatorWrapper />
+          
         </View>
       </Provider>
     )

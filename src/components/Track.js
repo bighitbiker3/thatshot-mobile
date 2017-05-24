@@ -3,15 +3,14 @@ import { connect } from 'react-redux'
 import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 
 import { addToQueue } from '../redux/actions/queue';
+import colors, { rgb } from '../lib/colors'
 
 import ArtistPage from './ArtistPage'
-import navigate from '../lib/navigate';
 
 const styles = StyleSheet.create({
   container: {
-    height: 80,
+    height: 70,
     width: '100%',
-    backgroundColor: 'black',
     flexDirection: 'row'
   },
   albumArt: {
@@ -26,13 +25,17 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Karla',
-    color: '#ecebe8',
-    fontWeight: '100'
+    color: colors.dark,
+    fontWeight: '100',
+    fontSize: 14,
+    width: '60%'
   },
   artist: {
     fontFamily: 'Karla',
-    color: '#828282',
-    fontWeight: '100'
+    color: colors.lightDark,
+    fontWeight: '100',
+    fontSize: 12,
+    alignSelf: 'flex-start' // This is has similar effect to width: 'auto'
   }
 })
 
@@ -50,11 +53,11 @@ const makeTitle = (title) => {
 class Track extends Component {
   constructor(props) {
     super(props);
-    this.navigate = navigate(this.props.navigator);
   }
   
   render() {
     const { artwork_url, title, user, artist, artist_id } = this.props.track
+    const { navigation } = this.props
     return (
       <TouchableOpacity
         onPress={() => this.props.addToQueue(this.props.track)}
@@ -69,17 +72,13 @@ class Track extends Component {
             <Text
               style={styles.artist}
               onPress={() => {
-                this.navigate('push', 
-                {
-                  component: ArtistPage, 
-                  passProps: { 
-                    endpoint: `https://api.soundcloud.com/users/${artist_id || user.id}/tracks/?client_id=622c5a5338becb1365fb57b6bdc97f09&linked_partitioning=1`,
-                    title: artist || user.username
-                  }
+                navigation.navigate('Artist', {
+                  endpoint: `https://api.soundcloud.com/users/${artist_id || user.id}/tracks/?client_id=622c5a5338becb1365fb57b6bdc97f09&linked_partitioning=1`,
+                  title: artist || user.username
                 })
               }}
             >{artist || user.username}</Text>
-            <Text style={styles.title}>{makeTitle(title)}</Text> 
+            <Text numberOfLines={2} style={styles.title}>{makeTitle(title)}</Text> 
           </View>
         </View>
       </TouchableOpacity>

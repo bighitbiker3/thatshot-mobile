@@ -1,26 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ListView, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-import TopNav from './TopNav';
-import BottomNav from './BottomNav';
-import Nav from './Nav';
 import Track from './Track';
 
 import { getQueue } from '../redux/selectors';
+import colors from '../lib/colors'
 
 class TrackList extends Component {
   constructor(props) {
     super(props);
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      likes: [],
+      tracks: this.ds.cloneWithRows([]),
       nextPage: null
     }
     this.makeTracks = this.makeTracks.bind(this);
+    this.makeSeparator = this.makeSeparator.bind(this);
     // this.handleScroll = this.handleScroll.bind(this);
-
   }
+
+  componentDidMount(nextProps) {
+    this.setState({tracks: this.ds.cloneWithRows(this.props.tracks)})
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.tracks !== this.props.tracks) {
+      this.setState({tracks: this.ds.cloneWithRows(nextProps.tracks)})
+    }
+  }
+  
+  
   
   loadMoreTracks() {
     const { nextPage, likes } = this.state;
@@ -34,10 +45,14 @@ class TrackList extends Component {
     }
   }
 
-  makeTracks(track, i) {
+  makeTracks(track) {
     return (
-      <Track key={i} playTrack={this.changeTrack} track={track} navigator={this.props.navigator} />
+      <Track playTrack={this.changeTrack} track={track} navigation={this.props.navigation} />
     )
+  }
+
+  makeSeparator() {
+    return <View style={{ width: '100%', height: 1, backgroundColor: 'transparent' }} />
   }
   
   // handleScroll(e) {
@@ -49,16 +64,19 @@ class TrackList extends Component {
 
   
   render() {
-    const { tracks } = this.props
+    const { tracks } = this.state
     return (
-      <ScrollView
+      <ListView
         onScroll={this.handleScroll}
         scrollEventThrottle={10}
-        contentContainerStyle={{paddingTop: '15%'}}
-        style={{height: '100%', position: 'absolute', top: 0, left: 0, backgroundColor: 'black'}}
-      >
-        {tracks.map(this.makeTracks)}
-      </ScrollView>
+        contentContainerStyle={{paddingTop: 10}}
+        style={{height: '100%', position: 'absolute', top: 0, left: 0, backgroundColor: colors.white}}
+        dataSource={tracks}
+        removeClippedSubviews={false}
+        renderSeparator={this.makeSeparator}
+        renderRow={this.makeTracks}
+        enableEmptySections={true}
+      />
     );
   }
 }

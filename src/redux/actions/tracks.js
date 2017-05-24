@@ -4,13 +4,15 @@ import {
   LIKES_FETCH_SUCCESS,
   ARTIST_FETCH_SUCCESS,
   ARTIST_CLEAR_TRACKS,
-  SAVANT_FETCH_SUCCESS
+  SAVANT_FETCH_SUCCESS,
+  PLAYLIST_FETCH_SUCCESS
 } from '../constants';
 
 const getFetchType = (page) => {
   if (page === 'likes') return LIKES_FETCH_SUCCESS
   if (page === 'artist') return ARTIST_FETCH_SUCCESS
   if (page === 'savant') return SAVANT_FETCH_SUCCESS
+  if (page === 'playlists') return PLAYLIST_FETCH_SUCCESS
 }
 
 export const fetchTracks = (endpoint, page) => {

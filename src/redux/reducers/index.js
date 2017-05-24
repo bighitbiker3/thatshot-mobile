@@ -4,11 +4,13 @@ import queue from './queue';
 import tracks from './tracks';
 import auth from './auth';
 import socket from './socket';
+import view from './view';
 
 export default combineReducers({
   player,
   queue,
   tracks,
   auth,
-  socket
+  socket,
+  view
 });

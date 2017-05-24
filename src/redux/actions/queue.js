@@ -1,12 +1,11 @@
 import {
   QUEUE_ADD,
-  SHIFT_QUEUE
+  SHIFT_QUEUE,
 } from '../constants';
 
 import { playTrack } from './player';
 
 export const addToQueue = (song) => {
-  console.log(song);
   return (dispatch, getState) => {
     const { track, soundObject } = getState().player;
     if(!track && !soundObject) { 

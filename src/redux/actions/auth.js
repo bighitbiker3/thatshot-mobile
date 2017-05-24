@@ -9,7 +9,7 @@ import { savantTracksReceived } from './tracks'
 export const getSession = () => {
   return function (dispatch, getState) {
     console.log('getting sessionnnn');
-    axios.get('http://localhost:3000' + '/session')
+    axios.get('https://thatshot.audio/session')
     .then(res => res.data)
     .then(data => {
       console.log('dataaaaaa', data);
@@ -22,8 +22,7 @@ export const getSession = () => {
       return data
     })
     .catch(err => {
-      const pathName = getState().routing.locationBeforeTransitions.pathname
-      if (err && pathName === '/') dispatch(openHeader())
+      console.log(err.status, 'errr getting session');
     })
   }
 }
@@ -34,15 +33,15 @@ export const startOnboarding = (id, soundcloud_id) => {
     if(!socket) return console.log('NO SOKCET CONN????');
     console.log('hitting onboarding');
 
-    axios.post(`http://localhost:3000/api/users/${soundcloud_id}/savants`) // eslint-disable-line camelcase
+    axios.post(`https://thatshot.audio/api/users/${soundcloud_id}/savants`) // eslint-disable-line camelcase
     
     socket.on('doneGettingSavants', () => {
       console.log('done getting savants', id, soundcloud_id)
-      return axios.post(`http://localhost:3000/api/songs/${id}/savantTracks`)
+      return axios.post(`https://thatshot.audio/api/songs/${id}/savantTracks`)
     })
 
     socket.on('doneCreateSavantTracks', () => {
-      axios.get(`http://localhost:3000/api/songs/${id}/savantTracks`)
+      axios.get(`https://thatshot.audio/api/songs/${id}/savantTracks`)
       .then(res => res.data)
       .then(songs => {
         dispatch(savantTracksReceived(songs))

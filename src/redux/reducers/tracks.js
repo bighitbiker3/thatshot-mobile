@@ -2,7 +2,8 @@ import {
   LIKES_FETCH_SUCCESS,
   ARTIST_FETCH_SUCCESS,
   ARTIST_CLEAR_TRACKS,
-  SAVANT_FETCH_SUCCESS
+  SAVANT_FETCH_SUCCESS,
+  PLAYLIST_FETCH_SUCCESS
 } from '../constants';
 
 const initialState = {
@@ -16,6 +17,10 @@ const initialState = {
   },
   savant: {
     tracks: []
+  },
+  playlists: {
+    playlists: [],
+    next_href: null
   }
 };
 
@@ -27,6 +32,15 @@ export default (state = initialState, action) => {
       ...state,
       likes: {
         tracks: action.payload.collection,
+        next_href: action.payload.next_href
+      }
+    }
+  }
+  case PLAYLIST_FETCH_SUCCESS: {
+    return {
+      ...state,
+      playlists: {
+        playlists: action.payload.collection,
         next_href: action.payload.next_href
       }
     }
